@@ -1,0 +1,33 @@
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+      /*display: flex;*/
+      /*flex-direction: row-reverse;*/
+     /*flex-direction: row;*/
+     /*align-items: center;*/
+     /*justify-content: center;*/
+    color: white;
+  }
+  
+  .wrapper-button{
+      display: flex;
+      flex-direction: row;
+      padding: 20px 50px;
+      flex-wrap: wrap;
+  }
+  
+  .button-item {
+      width: 80px;
+      margin: 5px;
+      margin: 20px;
+      text-align: center;
+  }
+  
+  .button-menu{
+      font-size: 40px !important;
+      height: auto !important;
+  }
+  
+  .color-text{
+      color: #fff;
+  }
