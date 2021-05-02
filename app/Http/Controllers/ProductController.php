@@ -127,4 +127,10 @@ class ProductController extends Controller
         }
         return response()->json(['error' => 'product id not found.'], 404);
     }
+
+    // get product only name
+    public function GetProductOnlyName(){
+        $products = DB::select("select id, product_name from products where status = 't'");
+        return $products;
+    }
 }

@@ -37,15 +37,18 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // product
     Route::apiResource('products', App\Http\Controllers\ProductController::class);
+    Route::get('products-name', [App\Http\Controllers\ProductController::class,'GetProductOnlyName']); 
 
     // agent
     Route::apiResource('agents', App\Http\Controllers\AgentController::class);
 
     // service
     Route::apiResource('services', App\Http\Controllers\ServiceController::class);
-
+    Route::get('services-name', [App\Http\Controllers\ServiceController::class,'getServiceName']);
+    
     // customers
     Route::apiResource('customers', App\Http\Controllers\CustomerController::class);
+    Route::get('customer-with-phone', [App\Http\Controllers\CustomerController::class,'GetCustomerNameAndPhone']);    
 
     // invoice
     Route::apiResource('invoice', App\Http\Controllers\InvoiceController::class);
@@ -53,6 +56,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     // Reports
     Route::apiResource('OrderReports', App\Http\Controllers\OrderReportController::class);
 
+
+    // Categorys
+    Route::apiResource('categories', App\Http\Controllers\CategoryController::class);
 });
 
 Route::middleware('api')->group(function () {

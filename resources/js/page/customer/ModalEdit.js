@@ -1,13 +1,12 @@
 import { Modal, Form, Input } from 'antd';
 
 const ModalEdit = ({ visible, onCreate, onCancel , value}) => {
-    const [form] = Form.useForm();    
-    console.log(value)
+    const [form] = Form.useForm();        
 
-    if(value){
-        //form.setFields();
+    if(value){      
+        form.setFieldsValue({...value});
     }    
-
+    
     return (
       <Modal         
         visible={visible}
@@ -18,8 +17,7 @@ const ModalEdit = ({ visible, onCreate, onCancel , value}) => {
         onOk={() => {            
           form
             .validateFields()
-            .then((values) => {
-              //form.resetFields();
+            .then((values) => {              
               onCreate(values);
             })
             .catch((info) => {
@@ -35,6 +33,18 @@ const ModalEdit = ({ visible, onCreate, onCancel , value}) => {
             modifier: 'public',
           }}
         >
+          <Form.Item
+              style={{display: 'none'}}                
+              name="id"                      
+              rules={[
+                {
+                  required: true                        
+                },
+              ]}
+            >
+            <Input />
+          </Form.Item>
+
           <Form.Item
             name="name"
             label="Name"

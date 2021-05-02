@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://192.168.0.103";
+const URL = "http://localhost";
 const PORT = "8000";
 const PREFIX = "api";
 

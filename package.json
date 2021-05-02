@@ -26,10 +26,11 @@
     },
     "dependencies": {
         "@ant-design/icons": "^4.6.2",
-        "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
         "antd": "^4.15.4",
         "browser-sync": "^2.26.14",
         "browser-sync-webpack-plugin": "^2.3.0",
+        "formik": "^2.2.6",
+        "moment": "^2.29.1",
         "react-refresh": "^0.10.0",
         "react-router-dom": "^5.2.0"
     }

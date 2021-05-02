@@ -10,6 +10,8 @@ import Home from '../page/Home';
 import useToken from '../utils/useToken';
 import Dashboard from './Dashboard';
 import Customer from '../page/customer/Customer';
+import Service from '../page/service';
+import Order from '../page/order/Order';
 
 function App() {
     const {setToken, token} = useToken();    
@@ -23,6 +25,8 @@ function App() {
             <Switch>
                 <Route exact path="/" component={Dashboard}/> 
                 <Route exact path="/customers" component={Customer}/> 
+                <Route exact path="/services" component={Service}/> 
+                <Route exact path="/orders" component={Order}/> 
             </Switch>           
         </BrowserRouter>        
     );

@@ -123,4 +123,10 @@ class CustomerController extends Controller
 
         return ['message' => 'customer is deleted.'];
     }
+
+    // get customer and phone
+    public function GetCustomerNameAndPhone(){
+        $customer = DB::select("select id, name, phone from customers where status ='enable'");
+        return $customer;
+    }
 }

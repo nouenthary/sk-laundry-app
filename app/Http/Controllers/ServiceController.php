@@ -6,6 +6,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\ServiceType;
 
 class ServiceController extends Controller
 {
@@ -112,5 +113,16 @@ class ServiceController extends Controller
         }
 
         return response()->json(['error' => 'service id not found.'], 404);
+    }
+
+    // get service name
+    public function GetServiceType(){
+        $services = ServiceType::pluck('service_name');
+        return $services;
+    }
+
+    public function getServiceName(){
+        $services = DB::select("select id, service_name from services where status = 't'");
+        return $services;
     }
 }
