@@ -1,0 +1,56 @@
+.skin-blue .main-header .navbar  {
+    background: #1890ff !important;
+}
+
+.skin-blue .main-header .logo {
+    background: #0276e2 !important;
+}
+
+.sidebar-toggle a:hover {
+    background: #0276e2 !important;
+}
+
+.btn-danger {
+    background: #ff4d4f !important;
+    border-color: #ff4d4f !important;
+}
+
+.btn-primary {
+    background-color: #1890ff !important;
+    border-color: #1890ff !important;
+}
+
+.btn-success, .label-success, .bg-green {
+    background: #52c41a !important;
+    border-color: #52c41a !important;
+}
+
+
+.bg-red, .label-danger {
+    background: #ff4d4f !important;
+    border-color: #ff4d4f !important;
+}
+
+.box.box-danger {
+    border-top-color: #ff4d4f !important;
+}
+
+.box.box-primary {
+    border-top-color: #1890ff !important;
+}
+
+.skin-blue .main-header li.user-header {
+    background-color: #1890ff !important;
+}
+
+.bg-aqua {
+    background-color: #1890ff !important;
+}
+
+.skin-blue .sidebar-menu > li.active > a {
+    border-left-color: #1890ff !important;
+}
+
+.text-success {
+    color: #52c41a !important;
+}
