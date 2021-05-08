@@ -13,13 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('{any}', function () {
-    return view('welcome');
-})->where('any', '.*');
+Route::get('/auth',[App\Http\Controllers\LoginController::class,'index']);
+Route::post('/auth/login',[App\Http\Controllers\LoginController::class,'login']);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/',[App\Http\Controllers\HomeController::class,'index']);
+
+Route::resource('admin/agents',App\Http\Controllers\AgentController::class);
+Route::get('admin/getAgent',[App\Http\Controllers\AgentController::class,'getAgent'])->name('get-agent');
+
+//Route::get('{any}', function () {
+//    return view('welcome');
+//})->where('any', '.*');
+
+ Route::get('/auth/welcome', function () {
+     return view('welcome');
+ });
 
 Auth::routes();
 

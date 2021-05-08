@@ -14,11 +14,22 @@ class AgentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $agents = DB::table('agents');
+        return view('agent.index');
+    }
 
-        return response()->json(['data' => $agents->get()], 200);
+    // get agent
+    public function getAgent(Request $request){
+        $agents = Agent::where('status','Enable')->get();
+        return \DataTables::of($agents)
+            ->addColumn('Actions', function($data) {
+                return
+                    '<button type="button" class="btn btn-primary btn-xs" id="btn-edit" data-id="'.$data->id.'"><i class="fa fa-pencil"></i></button>
+                    <button type="button" data-id="'.$data->id.'" class="btn btn-danger btn-xs" id="btn-remove"><i class="fa fa-minus"></i></button>';
+            })
+            ->rawColumns(['Actions'])
+            ->make(true);
     }
 
     /**
@@ -66,7 +77,7 @@ class AgentController extends Controller
         $agent = Agent::where('id', $id)->Where('status', 'Enable')->first();
 
         if ($agent) {
-            return response()->json(['data' => $agent], 200);
+            return $agent;
         }
 
         return response()->json(['error' => 'agent id not found.'], 404);
@@ -101,8 +112,11 @@ class AgentController extends Controller
 
         $request['user_id'] = Auth::id();
 
-        Agent::where('id', $id)->update($request->all());
-
+        DB::table('agents')->where('id', $id)->update([
+            'agent_name' => $request->get('agent_name'),
+            'tel' => $request->get('tel'),
+            'address' => $request->get('address')
+        ]);
 
         return response()->json(['message' => 'Agent update successfully.']);
     }
