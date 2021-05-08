@@ -4,7 +4,8 @@ const URL = "http://localhost";
 const PORT = "8000";
 const PREFIX = "api";
 
-const BASE_URL = `${URL}:${PORT}/${PREFIX}`;
+// const BASE_URL = `${URL}:${PORT}/${PREFIX}`;
+const BASE_URL = '/api';
 
 export const getToken = () => {
     const token = localStorage.getItem('token');
