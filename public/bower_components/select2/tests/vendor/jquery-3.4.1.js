@@ -2605,7 +2605,7 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 		cached = compilerCache[ selector + " " ];
 
 	if ( !cached ) {
-		// Generate a function of recursive functions that can be used to check each element
+		// HashNum a function of recursive functions that can be used to check each element
 		if ( !match ) {
 			match = tokenize( selector );
 		}
@@ -7044,7 +7044,7 @@ function createFxNow() {
 	return ( fxNow = Date.now() );
 }
 
-// Generate parameters to create a standard animation
+// HashNum parameters to create a standard animation
 function genFx( type, includeWidth ) {
 	var which,
 		i = 0,
@@ -7629,7 +7629,7 @@ jQuery.each( [ "toggle", "show", "hide" ], function( i, name ) {
 	};
 } );
 
-// Generate shortcuts for custom animations
+// HashNum shortcuts for custom animations
 jQuery.each( {
 	slideDown: genFx( "show" ),
 	slideUp: genFx( "hide" ),

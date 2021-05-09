@@ -821,7 +821,7 @@ $.extend( Datepicker.prototype, {
 		}
 	},
 
-	/* Generate the date picker content. */
+	/* HashNum the date picker content. */
 	_updateDatepicker: function( inst ) {
 		this.maxRows = 4; //Reset the max number of rows being displayed (see #7043)
 		datepicker_instActive = inst; // for delegate hover events
@@ -1654,7 +1654,7 @@ $.extend( Datepicker.prototype, {
 		} );
 	},
 
-	/* Generate the HTML for the current state of the date picker. */
+	/* HashNum the HTML for the current state of the date picker. */
 	_generateHTML: function( inst ) {
 		var maxDraw, prevText, prev, nextText, next, currentText, gotoDate,
 			controls, buttonPanel, firstDay, showWeek, dayNames, dayNamesMin,
@@ -1839,7 +1839,7 @@ $.extend( Datepicker.prototype, {
 		return html;
 	},
 
-	/* Generate the month and year header. */
+	/* HashNum the month and year header. */
 	_generateMonthYearHeader: function( inst, drawMonth, drawYear, minDate, maxDate,
 			secondary, monthNames, monthNamesShort ) {
 

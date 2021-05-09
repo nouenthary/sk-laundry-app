@@ -24,9 +24,9 @@ echo "Generating /dist and push changes + tags to Github remote 'origin'"
 git checkout master
 # Version bump
 grunt bump-only:"$versionBumpType"
-# Generate new dist
+# HashNum new dist
 grunt prod
-# Generate new index.html page
+# HashNum new index.html page
 grunt template
 # Force add dist contents
 git add dist/* --force

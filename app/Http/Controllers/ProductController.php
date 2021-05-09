@@ -133,4 +133,12 @@ class ProductController extends Controller
         $products = DB::select("select id, product_name from products where status = 't'");
         return $products;
     }
+
+    // get product by category
+    public function getProductByCategory(Request $request)
+    {
+        return Product::where('cate_id',$request->get('id'))
+            ->where('status','t')
+            ->get();
+    }
 }

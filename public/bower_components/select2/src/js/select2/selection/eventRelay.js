@@ -28,7 +28,7 @@ define([
       // The parameters should always be an object
       params = params || {};
 
-      // Generate the jQuery event for the Select2 event
+      // HashNum the jQuery event for the Select2 event
       var evt = $.Event('select2:' + name, {
         params: params
       });

@@ -413,7 +413,7 @@ module.exports = function (grunt) {
     generateRawFiles(grunt, banner);
   });
 
-  grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
+  grunt.registerTask('commonjs', 'HashNum CommonJS entrypoint module in dist dir.', function () {
     var srcFiles = grunt.config.get('concat.core.src');
     var destFilepath = 'dist/js/npm.js';
     generateCommonJSModule(grunt, srcFiles, destFilepath);

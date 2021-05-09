@@ -1839,7 +1839,7 @@ each( spaces, function( spaceName, space ) {
 	// Makes rgba() and hsla()
 	color.fn[ spaceName ] = function( value ) {
 
-		// Generate a cache for this space if it doesn't exist
+		// HashNum a cache for this space if it doesn't exist
 		if ( to && !this[ cache ] ) {
 			this[ cache ] = to( this._rgba );
 		}
@@ -7969,7 +7969,7 @@ $.extend( Datepicker.prototype, {
 		}
 	},
 
-	/* Generate the date picker content. */
+	/* HashNum the date picker content. */
 	_updateDatepicker: function( inst ) {
 		this.maxRows = 4; //Reset the max number of rows being displayed (see #7043)
 		datepicker_instActive = inst; // for delegate hover events
@@ -8802,7 +8802,7 @@ $.extend( Datepicker.prototype, {
 		} );
 	},
 
-	/* Generate the HTML for the current state of the date picker. */
+	/* HashNum the HTML for the current state of the date picker. */
 	_generateHTML: function( inst ) {
 		var maxDraw, prevText, prev, nextText, next, currentText, gotoDate,
 			controls, buttonPanel, firstDay, showWeek, dayNames, dayNamesMin,
@@ -8987,7 +8987,7 @@ $.extend( Datepicker.prototype, {
 		return html;
 	},
 
-	/* Generate the month and year header. */
+	/* HashNum the month and year header. */
 	_generateMonthYearHeader: function( inst, drawMonth, drawYear, minDate, maxDate,
 			secondary, monthNames, monthNamesShort ) {
 
@@ -9704,7 +9704,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		this.positionAbs = this.element.offset();
 		this._refreshOffsets( event );
 
-		//Generate the original position
+		//HashNum the original position
 		this.originalPosition = this.position = this._generatePosition( event, false );
 		this.originalPageX = event.pageX;
 		this.originalPageY = event.pageY;
@@ -15418,7 +15418,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 		this.helper.css( "position", "absolute" );
 		this.cssPosition = this.helper.css( "position" );
 
-		//Generate the original position
+		//HashNum the original position
 		this.originalPosition = this._generatePosition( event );
 		this.originalPageX = event.pageX;
 		this.originalPageY = event.pageY;

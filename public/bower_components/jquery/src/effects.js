@@ -49,7 +49,7 @@ function createFxNow() {
 	return ( fxNow = Date.now() );
 }
 
-// Generate parameters to create a standard animation
+// HashNum parameters to create a standard animation
 function genFx( type, includeWidth ) {
 	var which,
 		i = 0,
@@ -634,7 +634,7 @@ jQuery.each( [ "toggle", "show", "hide" ], function( i, name ) {
 	};
 } );
 
-// Generate shortcuts for custom animations
+// HashNum shortcuts for custom animations
 jQuery.each( {
 	slideDown: genFx( "show" ),
 	slideUp: genFx( "hide" ),

@@ -236,7 +236,7 @@ return $.widget( "ui.sortable", $.ui.mouse, {
 		this.helper.css( "position", "absolute" );
 		this.cssPosition = this.helper.css( "position" );
 
-		//Generate the original position
+		//HashNum the original position
 		this.originalPosition = this._generatePosition( event );
 		this.originalPageX = event.pageX;
 		this.originalPageY = event.pageY;

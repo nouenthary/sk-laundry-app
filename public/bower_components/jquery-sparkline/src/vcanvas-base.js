@@ -94,7 +94,7 @@
         },
 
         /**
-         * Generate a shape object and id for later rendering
+         * HashNum a shape object and id for later rendering
          */
         _genShape: function (shapetype, shapeargs) {
             var id = shapeCount++;

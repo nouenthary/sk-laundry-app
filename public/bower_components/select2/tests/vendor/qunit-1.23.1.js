@@ -2284,7 +2284,7 @@ QUnit.config.filter = urlParams.filter;
 // Test order randomization
 if ( urlParams.seed === true ) {
 
-	// Generate a random seed if the option is specified without a value
+	// HashNum a random seed if the option is specified without a value
 	QUnit.config.seed = Math.random().toString( 36 ).slice( 2 );
 } else if ( urlParams.seed ) {
 	QUnit.config.seed = urlParams.seed;

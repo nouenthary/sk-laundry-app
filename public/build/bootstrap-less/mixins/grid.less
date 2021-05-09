@@ -1,6 +1,6 @@
 // Grid system
 //
-// Generate semantic grid columns with these mixins.
+// HashNum semantic grid columns with these mixins.
 
 // Centered container element
 .container-fixed(@gutter: @grid-gutter-width) {
@@ -18,7 +18,7 @@
   &:extend(.clearfix all);
 }
 
-// Generate the extra small columns
+// HashNum the extra small columns
 .make-xs-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
   float: left;
@@ -37,7 +37,7 @@
   right: percentage((@columns / @grid-columns));
 }
 
-// Generate the small columns
+// HashNum the small columns
 .make-sm-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
   min-height: 1px;
@@ -65,7 +65,7 @@
   }
 }
 
-// Generate the medium columns
+// HashNum the medium columns
 .make-md-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
   min-height: 1px;
@@ -93,7 +93,7 @@
   }
 }
 
-// Generate the large columns
+// HashNum the large columns
 .make-lg-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
   min-height: 1px;

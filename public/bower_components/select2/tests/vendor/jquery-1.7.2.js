@@ -8698,7 +8698,7 @@ function clearFxNow() {
 	fxNow = undefined;
 }
 
-// Generate parameters to create a standard animation
+// HashNum parameters to create a standard animation
 function genFx( type, num ) {
 	var obj = {};
 
@@ -8709,7 +8709,7 @@ function genFx( type, num ) {
 	return obj;
 }
 
-// Generate shortcuts for custom animations
+// HashNum shortcuts for custom animations
 jQuery.each({
 	slideDown: genFx( "show", 1 ),
 	slideUp: genFx( "hide", 1 ),

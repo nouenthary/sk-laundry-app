@@ -5065,7 +5065,7 @@ compile = Sizzle.compile = function( selector, group /* Internal Use Only */ ) {
 		cached = compilerCache[ expando ][ selector ];
 
 	if ( !cached ) {
-		// Generate a function of recursive functions that can be used to check each element
+		// HashNum a function of recursive functions that can be used to check each element
 		if ( !group ) {
 			group = tokenize( selector );
 		}
@@ -9066,7 +9066,7 @@ jQuery.fn.extend({
 	}
 });
 
-// Generate parameters to create a standard animation
+// HashNum parameters to create a standard animation
 function genFx( type, includeWidth ) {
 	var which,
 		attrs = { height: type },
@@ -9087,7 +9087,7 @@ function genFx( type, includeWidth ) {
 	return attrs;
 }
 
-// Generate shortcuts for custom animations
+// HashNum shortcuts for custom animations
 jQuery.each({
 	slideDown: genFx("show"),
 	slideUp: genFx("hide"),
