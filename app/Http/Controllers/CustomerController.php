@@ -17,17 +17,21 @@ class CustomerController extends Controller
      * @return array
      */
     public function index(Request $request)
-    {
-        $customers = DB::table('customers')->where('status', 'enable');
+    {        
+        return view('customer.index');
+    }
 
-        if ($request->get('name') != '') {
-            $customers->where('name', $request->get('name'));
-        }
-        if ($request->get('phone') != '') {
-            $customers->where('phone', $request->get('phone'));
-        }
-
-        return ['data' => $customers->get()];
+    //get customers
+    public function getCustomer(){
+        $customers = Customer::where('status','enable')->get();
+        return \DataTables::of($customers)
+            ->addColumn('Actions', function($customers) {
+                return
+                    '<button type="button" class="btn btn-primary btn-xs" id="btn-edit" data-id="'.$customers->id.'"><i class="fa fa-pencil"></i></button>
+                    <button type="button" data-id="'.$customers->id.'" class="btn btn-danger btn-xs" id="btn-remove"><i class="fa fa-minus"></i></button>';
+            })
+            ->rawColumns(['Actions'])
+            ->make(true);
     }
 
     /**
@@ -62,12 +66,12 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        $customers = DB::table('customers')->find($id);
+        $customers = Customer::find($id);
 
-        if (isEmpty($customers)) {
+        if (!isset($customers)) {
             return ['error' => "customer id find not found."];
         }
-        return ['data' => $customers];
+        return $customers;
     }
 
     /**
@@ -77,7 +81,7 @@ class CustomerController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         // check name
         $customer_name = Customer::where('name',$request->name)
@@ -97,8 +101,12 @@ class CustomerController extends Controller
         }
 
         DB::table('customers')
-            ->where('id', $request->get('id'))
-            ->update($request->all());
+            ->where('id',$id)
+            ->update([
+                'name' => $request->get('name'),
+                'phone' => $request->get('phone'),
+                'address' => $request->get('address')
+            ]);
 
         return ['message' => 'customer update successfully.'];
     }
@@ -119,7 +127,7 @@ class CustomerController extends Controller
 
         DB::table('customers')
             ->where('id', $id)
-            ->update(['status' => '0']);
+            ->update(['status' => 'disable']);
 
         return ['message' => 'customer is deleted.'];
     }

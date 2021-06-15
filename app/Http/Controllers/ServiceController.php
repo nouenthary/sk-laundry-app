@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\ServiceType;
+use DateTime;
 
 class ServiceController extends Controller
 {
@@ -18,13 +19,20 @@ class ServiceController extends Controller
      */
     public function index(Request $request)
     {
-        $services = DB::table('services')->where('status', 't');
+        $services = DB::table('services')->where('status', 't')->orderBy('id', 'DESC');
 
         if ($request->get('type') != '') {
             $services->where('type', $request->get('type'));
         }
 
-        return response()->json(['data' => $services->get()], 200);
+        $service_type = ServiceType::pluck('service_name');
+
+        $data = [
+            'services' => $services->get(),
+            'service_type' => $service_type
+        ];
+
+        return view('service.index', $data);
     }
 
     /**
@@ -35,6 +43,17 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        if(isset($start_date) != '' && isset($end_date) != ''){
+            $start_date = new DateTime($start_date);
+            $end_date = new DateTime( $end_date); 
+            if($start_date > $end_date){
+                return ['error'=>'start data must be less then end date.'];    
+            }        
+        }        
+
         $service = Service::where('service_name', $request->get('service_name'))
             ->where('unit_type', $request->get('unit_type'))
             ->where('type', $request->get('type'))
@@ -78,6 +97,17 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        if(isset($start_date) != '' && isset($end_date) != ''){
+            $start_date = new DateTime($start_date);
+            $end_date = new DateTime( $end_date); 
+            if($start_date > $end_date){
+                return ['error'=>'start data must be less then end date.'];    
+            }        
+        }
+
         $service = Service::where('service_name', $request->get('service_name'))
             ->where('unit_type', $request->get('unit_type'))
             ->where('type', $request->get('type'))
@@ -87,9 +117,24 @@ class ServiceController extends Controller
 
         if ($service) {
             return response()->json(['error' => 'service is exist.'],203);
-        }
+        }       
 
-        Service::where('id',$id)->update($request->all());
+        DB::table('services')
+        ->where('id', $id)  
+        ->limit(1) 
+        ->update(
+            [
+                'service_name' => $request->service_name,
+                'price' => $request->price,
+                'discount' => $request->discount,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'unit_type' => $request->unit_type,
+                'unit' => $request->unit,
+                'type' => $request->type,
+                'user_id' => Auth::id()
+            ]         
+        );      
 
         return response()->json(['message' => 'service update successfully.'],201);
     }

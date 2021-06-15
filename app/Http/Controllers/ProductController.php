@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Validator;
 
 class ProductController extends Controller
 {
@@ -25,7 +26,11 @@ class ProductController extends Controller
             $products->where('product_name', $request->get('product_name'));
         }
 
-        return response()->json(['data' => $products->get()], 200);
+        $data = [
+            'products' => $products->orderBy('id', 'DESC')->get()
+        ];
+
+        return view('product.index', $data);
     }
 
     /**
@@ -35,24 +40,27 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $category = DB::table('categories')
-            ->where('id', $request->get('cate_id'))->first();
+    {          
+        $exist = DB::table('products')
+        ->where('product_name', $request->product_name)
+        ->where('status','t')
+        ->first();
 
-        if (!isset($category)) {
-            return response()->json(['warning' => 'category id not found.'], 404);
+        if(isset($exist) != ''){
+            return ['error' => 'Product name has exist.'];
         }
-
-        $product = Product::where('cate_id', $request->get('cate_id'))
-            ->where('product_name', $request->get('product_name'))
+                                                       
+        $product = Product::where('product_name', $request->get('product_name'))
             ->where('status', 't')->first();
         if (isset($product)) {
             return response()->json(['error' => 'product name is exist.'], 204);
-        }
+        }        
 
-        Product::create($request->all());
+        $value = $request->all();                  
+        
+        Product::create($value);
 
-        return response()->json(['message' => $request->all()], 201);
+        return response()->json(['message' => 'Prodcut created successfully.'], 201);
     }
 
     /**
@@ -80,7 +88,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {        
         $product = Product::where('id', $id)->first();
 
         if (!isset($product)) {
@@ -94,11 +102,15 @@ class ProductController extends Controller
 
         if (isset($check_product)) {
             return response()->json(['error' => 'product name is exist.'], 203);
-        }
+        }      
 
         DB::table('products')
             ->where('id', $id)
-            ->update($request->all());
+            ->update([
+                'product_name' =>$request->product_name,
+                'photo' => $request->photo,
+                'desc' => $request->desc
+            ]);
 
 
         return response()->json(['data' => 'product update successfully.'], 200);
@@ -140,5 +152,5 @@ class ProductController extends Controller
         return Product::where('cate_id',$request->get('id'))
             ->where('status','t')
             ->get();
-    }
+    }    
 }

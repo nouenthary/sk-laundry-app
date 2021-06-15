@@ -28,6 +28,12 @@ class CreateInvoicesTable extends Migration
             $table->string('tran_id')->nullable();
             $table->string('qrcode')->nullable();
             $table->string('pay_status')->nullable();
+
+            $table->unsignedInteger('customer_id')->nullable();
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->double('amount')->default('0');
+            $table->string('invoice_no')->nullable();
+
             $table->timestamps();
         });
     }

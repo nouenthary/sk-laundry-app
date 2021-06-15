@@ -19,10 +19,10 @@ class CreateAgentInvoicesTable extends Migration
             $table->date('date')->nullable();
             $table->time('time')->nullable();
             $table->integer('user_id')->nullable();
-            $table->double('total');
-            $table->double('received_riel');
-            $table->double('received_dollar');
-            $table->double('total_riel');
+            $table->double('total')->default("0");
+            $table->double('received_riel')->default("0");;
+            $table->double('received_dollar')->default("0");;
+            $table->double('total_riel')->default("0");;
             $table->string('status')->nullable();
             $table->string('pay_by')->nullable();
             $table->string('print')->default('f');

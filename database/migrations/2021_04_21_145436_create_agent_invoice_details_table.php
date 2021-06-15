@@ -26,11 +26,11 @@ class CreateAgentInvoiceDetailsTable extends Migration
             $table->unsignedInteger('service_id')->nullable();
             $table->foreign('service_id')->references('id')->on('services');
 
-            $table->integer('qty');
-            $table->double('weight');
-            $table->double('price');
-            $table->double('discount');
-            $table->double('total');
+            $table->integer('qty')->default("0");;
+            $table->double('weight')->default("0");;
+            $table->double('price')->default("0");;
+            $table->double('discount')->default("0");;
+            $table->double('total')->default("0");;
             $table->date('date')->nullable();
             $table->time('time')->nullable();
             $table->string('status')->nullable();
